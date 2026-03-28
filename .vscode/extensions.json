@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "ms-playwright.playwright",
+    "vitest.explorer",
+    "github.vscode-github-actions",
+    "streetsidesoftware.code-spell-checker",
+    "antfu.unocss"
+  ]
+}

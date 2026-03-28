@@ -1,0 +1,42 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "no-duplicate-selectors": null,
+    "no-descending-specificity": null,
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": null,
+    "color-function-notation": "modern",
+    "alpha-value-notation": "percentage",
+    "custom-property-pattern": "^fn-[a-z][a-z0-9-]*$",
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["stylelint-commands", "after-comment"]
+      }
+    ],
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": true,
+    "value-keyword-case": [
+      "lower",
+      {
+        "camelCaseSvgKeywords": true
+      }
+    ],
+    "property-no-deprecated": [
+      true,
+      {
+        "ignoreProperties": ["clip"]
+      }
+    ],
+    "declaration-property-value-no-unknown": [
+      true,
+      {
+        "ignoreProperties": {
+          "aspect-ratio": ["/attr\\(/"]
+        }
+      }
+    ]
+  }
+}

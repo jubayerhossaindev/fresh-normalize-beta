@@ -1,0 +1,36 @@
+services:
+  # Development server with hot reload
+  dev:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '8080:8080'
+    environment:
+      - NODE_ENV=development
+
+  # Test runner
+  test:
+    build:
+      context: .
+      target: test
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    environment:
+      - CI=true
+      - NODE_ENV=test
+    command: npm run test:all
+
+  # Preview build output served via nginx
+  preview:
+    build:
+      context: .
+      target: production
+    ports:
+      - '8081:80'

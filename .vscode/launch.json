@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Playwright Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "args": ["playwright", "test", "--debug"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PWDEBUG": "1"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug Vitest Tests",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "args": ["vitest", "run", "--reporter=verbose"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}

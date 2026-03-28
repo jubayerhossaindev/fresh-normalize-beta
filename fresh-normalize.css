@@ -1,0 +1,1130 @@
+/*! fresh-normalize v1.0.0 | MIT License | https://github.com/YOUR_USERNAME/fresh-normalize */
+
+/*
+ * fresh-normalize — A modern CSS normalization library for 2026
+ *
+ * Philosophy:
+ *   ✦ Target evergreen browsers only (Chrome 120+, Firefox 120+, Safari 17+, Edge 120+)
+ *   ✦ No IE / legacy browser hacks
+ *   ✦ Normalize browser inconsistencies — never impose design opinions
+ *   ✦ Uses CSS custom properties for easy theming (all overridable)
+ *   ✦ Respects prefers-reduced-motion and prefers-color-scheme
+ *   ✦ Accessibility-first defaults
+ *
+ * Sections:
+ *   1.  CSS Custom Properties (Design Tokens)
+ *   2.  Box Model
+ *   3.  Document & Root
+ *   4.  Sections
+ *   5.  Typography
+ *   6.  Lists
+ *   7.  Links
+ *   8.  Embedded Content (Media)
+ *   9.  Tables
+ *   10. Forms
+ *   11. Interactive
+ *   12. Accessibility
+ *   13. Scrollbar
+ *   14. Motion
+ *   15. Print
+ */
+
+/* ==========================================================================
+   1. CSS Custom Properties (Design Tokens)
+   ========================================================================== */
+
+/**
+ * Global design tokens exposed as CSS custom properties.
+ * Override these in your :root to theme the normalizations.
+ */
+
+:root {
+	/* Typography */
+	--fn-font-sans:
+		system-ui, ui-sans-serif, "Segoe UI", roboto, helvetica, arial, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji";
+	--fn-font-mono:
+		ui-monospace, "Cascadia Code", "Source Code Pro", menlo, consolas, "DejaVu Sans Mono",
+		monospace;
+	--fn-font-serif: ui-serif, georgia, cambria, "Times New Roman", times, serif;
+
+	/* Sizing */
+	--fn-tab-size: 4;
+	--fn-line-height: 1.5;
+	--fn-heading-line-height: 1.2;
+
+	/* Focus */
+	--fn-focus-color: #005fcc;
+	--fn-focus-width: 3px;
+	--fn-focus-offset: 2px;
+
+	/* Color (light mode defaults) */
+	--fn-text-color: #1a1a1a;
+	--fn-bg-color: #fff;
+	--fn-link-color: #005fcc;
+	--fn-link-visited-color: #7c3aed;
+	--fn-border-color: #d1d5db;
+	--fn-mark-bg: #fef08a;
+	--fn-mark-color: #1a1a1a;
+	--fn-selection-bg: #bfdbfe;
+	--fn-selection-color: #1e3a5f;
+
+	/* Scrollbar */
+	--fn-scrollbar-width: thin;
+	--fn-scrollbar-track: #f1f5f9;
+	--fn-scrollbar-thumb: #94a3b8;
+	--fn-scrollbar-thumb-hover: #64748b;
+
+	/* Forms */
+	--fn-accent-color: #005fcc;
+	--fn-caret-color: #005fcc;
+	--fn-error-color: #dc2626;
+	--fn-success-color: #16a34a;
+}
+
+/* Dark mode tokens (auto-applied via prefers-color-scheme) */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--fn-text-color: #f1f5f9;
+		--fn-bg-color: #0f172a;
+		--fn-link-color: #60a5fa;
+		--fn-link-visited-color: #c084fc;
+		--fn-border-color: #334155;
+		--fn-mark-bg: #854d0e;
+		--fn-mark-color: #fef9c3;
+		--fn-selection-bg: #1e40af;
+		--fn-selection-color: #dbeafe;
+		--fn-scrollbar-track: #1e293b;
+		--fn-scrollbar-thumb: #475569;
+		--fn-scrollbar-thumb-hover: #64748b;
+	}
+}
+
+/* ==========================================================================
+   2. Box Model
+   ========================================================================== */
+
+/**
+ * Use border-box for all elements.
+ */
+
+*,
+::before,
+::after {
+	box-sizing: border-box;
+}
+
+/* ==========================================================================
+   3. Document & Root
+   ========================================================================== */
+
+/**
+ * 1. Set font stack consistently across all browsers.
+ * 2. Set a sensible base line-height.
+ * 3. Prevent font size changes after orientation change on iOS.
+ * 4. Use a readable tab size.
+ * 5. Enable smooth scrolling unless the user prefers reduced motion.
+ * 6. Force scrollbar to prevent layout shifts.
+ * 7. Set text rendering for best legibility.
+ * 8. Enable CSS color-scheme for proper system color integration.
+ * 9. Remove mobile tap highlight.
+ * 10. Disable double-tap zoom.
+ * 11. Better punctuation handling at line starts/ends.
+ * 12. Better text wrapping algorithm (Safari 17+).
+ * 13. Prevent breaking words mid-word.
+ * 14. Prevent content overflow.
+ * 15. Set accent and caret colors globally.
+ */
+
+html {
+	font-family: var(--fn-font-sans); /* 1 */
+	line-height: var(--fn-line-height); /* 2 */
+	-webkit-text-size-adjust: 100%; /* 3 */
+	-moz-text-size-adjust: 100%; /* 3 */
+	text-size-adjust: 100%; /* 3 */
+	tab-size: var(--fn-tab-size); /* 4 */
+	scroll-behavior: smooth; /* 5 */
+	scrollbar-gutter: stable; /* 6 */
+	text-rendering: optimizeLegibility; /* 7 */
+	-webkit-font-smoothing: antialiased; /* 7 */
+	-moz-osx-font-smoothing: grayscale; /* 7 */
+	color-scheme: light dark; /* 8 */
+	-webkit-tap-highlight-color: transparent; /* 9 */
+	touch-action: manipulation; /* 10 */
+	hanging-punctuation: first last; /* 11 */
+	text-wrap: pretty; /* 12 */
+	word-break: normal; /* 13 */
+	overflow-wrap: anywhere; /* 14 */
+	accent-color: var(--fn-accent-color); /* 15 */
+	caret-color: var(--fn-caret-color); /* 15 */
+}
+
+/* ==========================================================================
+   4. Sections
+   ========================================================================== */
+
+/**
+ * Remove the margin in all browsers.
+ */
+
+body {
+	margin: 0;
+	color: var(--fn-text-color);
+	background-color: var(--fn-bg-color);
+	min-block-size: 100vh;
+	min-block-size: 100dvh;
+	text-underline-offset: 0.1em;
+}
+
+/**
+ * Correct the font size and margin on h1 elements within section/article contexts.
+ */
+
+h1 {
+	font-size: 2em;
+	margin-block: 0.67em;
+}
+
+/**
+ * Consistent heading line heights.
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: var(--fn-heading-line-height);
+}
+
+/* ==========================================================================
+   5. Typography
+   ========================================================================== */
+
+/**
+ * Add the correct font weight in all browsers.
+ */
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+/**
+ * 1. Use a consistent monospace font stack.
+ * 2. Correct the odd em font sizing in all browsers.
+ */
+
+code,
+kbd,
+samp,
+pre {
+	font-family: var(--fn-font-mono); /* 1 */
+	font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+	font-size: 80%;
+}
+
+/**
+ * Prevent sub and sup elements from affecting the line height.
+ */
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+/**
+ * Correct the text decoration on abbreviations.
+ */
+
+abbr[title] {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
+/**
+ * Quotes — let browser handle per language.
+ */
+
+q {
+	quotes: auto;
+}
+
+/**
+ * Horizontal rule normalization.
+ */
+
+hr {
+	border: none;
+	border-block-start: 1px solid var(--fn-border-color);
+	margin-block: 1em;
+	color: inherit;
+	height: 0;
+}
+
+/**
+ * Prevent overflow on long words in containers.
+ */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/**
+ * Consistent text selection styling.
+ */
+
+::selection {
+	background-color: var(--fn-selection-bg, #bfdbfe);
+	color: var(--fn-selection-color, #1e3a5f);
+	text-shadow: none;
+}
+
+/**
+ * Mark/highlight element.
+ */
+
+mark {
+	background-color: var(--fn-mark-bg, #fef08a);
+	color: var(--fn-mark-color, #1a1a1a);
+	padding-inline: 0.25em;
+	border-radius: 2px;
+}
+
+/**
+ * Definition element.
+ */
+
+dfn {
+	font-style: italic;
+	font-weight: 500;
+}
+
+/**
+ * Address element — normalize margins.
+ */
+
+address {
+	font-style: normal;
+	margin-block: 0;
+}
+
+/**
+ * Insertion and deletion elements.
+ */
+
+ins {
+	text-decoration: none;
+	background-color: #bbf7d0;
+	color: #166534;
+}
+
+del {
+	text-decoration: line-through;
+	background-color: #fecaca;
+	color: #991b1b;
+}
+
+/**
+ * Bidirectional text isolation.
+ */
+
+bdi {
+	unicode-bidi: isolate;
+}
+
+bdo {
+	unicode-bidi: bidi-override;
+}
+
+/* ==========================================================================
+   6. Lists
+   ========================================================================== */
+
+/**
+ * Remove default list styles for nav lists and role=list.
+ */
+
+nav ol,
+nav ul,
+ol[role="list"],
+ul[role="list"] {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* ==========================================================================
+   7. Links
+   ========================================================================== */
+
+/**
+ * 1. Remove the gray background on active links in older browsers.
+ * 2. Apply link color token.
+ */
+
+a {
+	background-color: transparent; /* 1 */
+	color: var(--fn-link-color); /* 2 */
+}
+
+a:visited {
+	color: var(--fn-link-visited-color);
+}
+
+/**
+ * Improve focus visibility for keyboard users.
+ */
+
+a:focus-visible {
+	outline: var(--fn-focus-width) solid var(--fn-focus-color);
+	outline-offset: var(--fn-focus-offset);
+	border-radius: 2px;
+}
+
+/* ==========================================================================
+   8. Embedded Content (Media)
+   ========================================================================== */
+
+/**
+ * 1. Remove the border on images inside links.
+ * 2. Remove the gap below images (inline → block).
+ * 3. Fix descender gap on inline media.
+ */
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+	display: inline-block; /* 2 */
+	vertical-align: middle; /* 3 */
+}
+
+/**
+ * Constrain media to their container widths (responsive defaults).
+ */
+
+img,
+video,
+canvas {
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+/**
+ * Remove border on images.
+ */
+
+img {
+	border-style: none; /* 1 */
+}
+
+/**
+ * Prevent SVG overflow in older browsers.
+ */
+
+svg {
+	overflow: hidden;
+}
+
+/**
+ * Hide audio with no controls.
+ */
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+/**
+ * Figure and figcaption normalization.
+ */
+
+figure {
+	margin: 0;
+	padding: 0;
+}
+
+figcaption {
+	font-size: 0.875em;
+	font-style: italic;
+}
+
+/**
+ * Picture element — maintain responsiveness.
+ */
+
+picture {
+	display: contents;
+}
+
+/* ==========================================================================
+   9. Tables
+   ========================================================================== */
+
+/**
+ * 1. Correct table border color inheritance in Chrome and Safari.
+ * 2. Collapse borders by default.
+ * 3. Fix spacing inconsistencies.
+ */
+
+table {
+	border-color: currentColor; /* 1 */
+	border-collapse: collapse; /* 2 */
+	border-spacing: 0; /* 3 */
+}
+
+/**
+ * Normalize table cell padding and alignment.
+ */
+
+td,
+th {
+	padding: 0;
+	text-align: left;
+}
+
+/* ==========================================================================
+   10. Forms
+   ========================================================================== */
+
+/**
+ * 1. Change font styles in all browsers.
+ * 2. Remove margin in Firefox and Safari.
+ * 3. Set a consistent line-height.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-family: inherit; /* 1 */
+	font-size: 100%; /* 1 */
+	line-height: 1.15; /* 3 */
+	margin: 0; /* 2 */
+	color: inherit; /* 1 */
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+	-webkit-appearance: button;
+	appearance: auto;
+	cursor: pointer;
+}
+
+/**
+ * 1. Remove padding in fieldset.
+ * 2. Remove the default border.
+ */
+
+fieldset {
+	border: 0; /* 2 */
+	margin: 0; /* 1 */
+	padding: 0; /* 1 */
+}
+
+/**
+ * Normalize legend.
+ */
+
+legend {
+	padding: 0;
+	max-inline-size: 100%;
+	white-space: normal;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome and Firefox.
+ */
+
+progress {
+	vertical-align: baseline;
+}
+
+/**
+ * Correct the cursor style of spin buttons in Safari.
+ */
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+	height: auto;
+}
+
+/**
+ * 1. Correct odd appearance in Chrome and Safari.
+ * 2. Correct outline style in Safari.
+ */
+
+[type="search"] {
+	-webkit-appearance: textfield; /* 1 */
+	appearance: textfield; /* 1 */
+	outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove inner padding in Chrome and Safari on macOS.
+ */
+
+::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+/**
+ * 1. Fix clickable types in iOS and Safari.
+ * 2. Change font properties to inherit in Safari.
+ */
+
+::-webkit-file-upload-button {
+	-webkit-appearance: button; /* 1 */
+	font: inherit; /* 2 */
+}
+
+/**
+ * Modern file input reset.
+ */
+
+::file-selector-button {
+	font: inherit;
+	-webkit-appearance: button;
+	appearance: auto;
+}
+
+/**
+ * Vertical resize only for textarea.
+ */
+
+textarea {
+	resize: vertical;
+	overflow: auto;
+}
+
+/**
+ * Normalize placeholder opacity in Firefox.
+ */
+
+::placeholder {
+	opacity: 54%;
+	color: inherit;
+}
+
+/**
+ * Consistent color swatch sizing.
+ */
+
+[type="color"] {
+	block-size: 2.5em;
+	inline-size: 2.5em;
+	cursor: pointer;
+	padding: 0;
+	border: 1px solid var(--fn-border-color);
+	border-radius: 4px;
+}
+
+/**
+ * Range input — consistent cross-browser styling.
+ */
+
+input[type="range"] {
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+	inline-size: 100%;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+	background: var(--fn-border-color);
+	block-size: 4px;
+	border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	background: var(--fn-link-color);
+	block-size: 16px;
+	inline-size: 16px;
+	border-radius: 50%;
+	margin-block-start: -6px;
+	border: 2px solid var(--fn-bg-color);
+}
+
+input[type="range"]::-moz-range-track {
+	background: var(--fn-border-color);
+	block-size: 4px;
+	border-radius: 2px;
+}
+
+input[type="range"]::-moz-range-thumb {
+	background: var(--fn-link-color);
+	block-size: 16px;
+	inline-size: 16px;
+	border-radius: 50%;
+	border: 2px solid var(--fn-bg-color);
+}
+
+/**
+ * Date/time input normalization.
+ */
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"] {
+	-webkit-appearance: none;
+	appearance: none;
+	min-block-size: 2.5em;
+}
+
+/**
+ * Meter element normalization.
+ */
+
+meter {
+	-webkit-appearance: none;
+	appearance: none;
+	inline-size: 100%;
+	block-size: 1em;
+	vertical-align: middle;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+meter::-webkit-meter-bar {
+	background: var(--fn-scrollbar-track);
+	border-radius: 4px;
+}
+
+meter::-webkit-meter-optimum-value {
+	background: #22c55e;
+}
+
+meter::-webkit-meter-suboptimum-value {
+	background: #eab308;
+}
+
+meter::-webkit-meter-even-less-good-value {
+	background: #ef4444;
+}
+
+meter::-moz-meter-bar {
+	background: #22c55e;
+	border-radius: 4px;
+}
+
+/**
+ * Output element normalization.
+ */
+
+output {
+	display: inline-block;
+	font-family: var(--fn-font-mono);
+	font-size: 0.875em;
+}
+
+/**
+ * Disabled form elements.
+ */
+
+input:disabled,
+button:disabled,
+select:disabled,
+textarea:disabled,
+optgroup:disabled {
+	cursor: not-allowed;
+	opacity: 60%;
+}
+
+/**
+ * Readonly form elements.
+ */
+
+input:read-only,
+textarea:read-only {
+	cursor: default;
+}
+
+/**
+ * Remove yellow/blue autofill background.
+ */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 1000px var(--fn-bg-color) inset;
+	-webkit-text-fill-color: var(--fn-text-color);
+	caret-color: var(--fn-text-color);
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+/**
+ * Form validation states.
+ */
+
+input:user-invalid,
+textarea:user-invalid,
+select:user-invalid {
+	border-color: var(--fn-error-color);
+}
+
+input:user-valid,
+textarea:user-valid,
+select:user-valid {
+	border-color: var(--fn-success-color);
+}
+
+/* ==========================================================================
+   11. Interactive
+   ========================================================================== */
+
+/**
+ * Add the correct display in all browsers.
+ */
+
+summary {
+	display: list-item;
+	cursor: pointer;
+}
+
+details {
+	display: block;
+}
+
+/**
+ * Add the correct display for template and hidden elements.
+ */
+
+template,
+[hidden] {
+	display: none;
+}
+
+/**
+ * Consistent dialog element styling.
+ */
+
+dialog {
+	background-color: var(--fn-bg-color);
+	color: var(--fn-text-color);
+	border: 1px solid var(--fn-border-color);
+	border-radius: 8px;
+	padding: 1.5em;
+	max-inline-size: min(90vw, 560px);
+}
+
+dialog::backdrop {
+	background-color: rgb(0 0 0 / 50%);
+	backdrop-filter: blur(2px);
+}
+
+/**
+ * Normalize popover element (Chrome 114+, Firefox 125+, Safari 17+).
+ */
+
+:is([popover]) {
+	border: 1px solid var(--fn-border-color);
+	border-radius: 8px;
+	padding: 1em;
+	background-color: var(--fn-bg-color);
+	color: var(--fn-text-color);
+}
+
+/* ==========================================================================
+   12. Accessibility
+   ========================================================================== */
+
+/**
+ * Consistent focus-visible outline for all interactive elements.
+ */
+
+:focus-visible {
+	outline: var(--fn-focus-width) solid var(--fn-focus-color);
+	outline-offset: var(--fn-focus-offset);
+}
+
+/**
+ * Remove focus ring for mouse users.
+ */
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/**
+ * Visually hidden — accessible to screen readers only.
+ * Usage: <span class="sr-only">Screen reader only text</span>
+ */
+
+.sr-only {
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	block-size: 1px;
+	inline-size: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+}
+
+/**
+ * Skip-to-content link for keyboard users.
+ * Usage: <a href="#main-content" class="skip-link">Skip to main content</a>
+ */
+
+.skip-link {
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	block-size: 1px;
+	inline-size: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+}
+
+.skip-link:focus {
+	clip: auto;
+	clip-path: none;
+	block-size: auto;
+	inline-size: auto;
+	background-color: var(--fn-bg-color);
+	color: var(--fn-link-color);
+	font-weight: bold;
+	padding: 0.5em 1em;
+	position: fixed;
+	inset-block-start: 1em;
+	inset-inline-start: 1em;
+	z-index: 999;
+	border-radius: 4px;
+	border: 2px solid var(--fn-focus-color);
+	text-decoration: none;
+}
+
+/**
+ * High contrast mode support.
+ */
+
+@media (prefers-contrast: more) {
+	:root {
+		--fn-text-color: #000;
+		--fn-bg-color: #fff;
+		--fn-border-color: #000;
+		--fn-link-color: #00e;
+		--fn-link-visited-color: #551a8b;
+		--fn-focus-color: #000;
+	}
+
+	::selection {
+		background-color: #000;
+		color: #fff;
+	}
+
+	a:focus-visible,
+	:focus-visible {
+		outline: 3px solid #000;
+		outline-offset: 2px;
+	}
+}
+
+/**
+ * Forced colors mode (Windows High Contrast).
+ */
+
+@media (forced-colors: active) {
+	:focus-visible {
+		outline: 3px solid CanvasText;
+		outline-offset: 2px;
+	}
+
+	.sr-only,
+	.skip-link {
+		clip: rect(0, 0, 0, 0);
+		position: absolute;
+	}
+
+	.skip-link:focus {
+		clip: auto;
+		position: fixed;
+	}
+
+	button,
+	[type="button"],
+	[type="reset"],
+	[type="submit"] {
+		border: 1px solid ButtonText;
+	}
+
+	input,
+	select,
+	textarea {
+		border: 1px solid ButtonText;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		border: 2px solid ButtonText;
+	}
+
+	mark {
+		background-color: Highlight;
+		color: HighlightText;
+	}
+}
+
+/**
+ * RTL/LTR — logical direction support.
+ */
+
+[dir="rtl"] {
+	text-align: right;
+}
+
+[dir="ltr"] {
+	text-align: left;
+}
+
+/* ==========================================================================
+   13. Scrollbar
+   ========================================================================== */
+
+/**
+ * Consistent scrollbar styling (Firefox 64+, Chrome 121+).
+ */
+
+* {
+	scrollbar-width: var(--fn-scrollbar-width);
+	scrollbar-color: var(--fn-scrollbar-thumb) var(--fn-scrollbar-track);
+}
+
+::-webkit-scrollbar {
+	inline-size: 8px;
+	block-size: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--fn-scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--fn-scrollbar-thumb);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--fn-scrollbar-thumb-hover);
+}
+
+/* ==========================================================================
+   14. Motion
+   ========================================================================== */
+
+/**
+ * Disable animations for users who prefer reduced motion.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* ==========================================================================
+   15. Print
+   ========================================================================== */
+
+/**
+ * Consistent, readable print styles.
+ */
+
+@media print {
+	*,
+	::before,
+	::after {
+		background: transparent !important;
+		color: #000 !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	a,
+	a:visited {
+		text-decoration: underline;
+	}
+
+	a[href]::after {
+		content: " (" attr(href) ")";
+		font-size: 0.8em;
+	}
+
+	abbr[title]::after {
+		content: " (" attr(title) ")";
+	}
+
+	pre,
+	blockquote,
+	img,
+	table,
+	figure {
+		break-inside: avoid;
+	}
+
+	img {
+		max-inline-size: 100% !important;
+	}
+
+	h2,
+	h3 {
+		break-after: avoid;
+	}
+
+	p {
+		orphans: 3;
+		widows: 3;
+	}
+}

@@ -1,0 +1,50 @@
+version: 2
+updates:
+  # npm ডিপেন্ডেন্সি আপডেট (weekly গ্ৰুপিং সহ)
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'UTC'
+    open-pull-requests-limit: 10
+    # আপনার ইউজারনেম এখানে দিতে পারেন
+    # reviewers:
+    #   - 'jubayerhossaindev'
+    labels:
+      - 'dependencies'
+      - 'automated'
+    commit-message:
+      prefix: 'deps'
+      include: 'scope'
+    versioning-strategy: 'increase'
+    # সব devDependencies কে একটি PR-এ নিয়ে আসবে
+    groups:
+      dev-dependencies:
+        patterns:
+          - '*'
+        update-types:
+          - 'patch'
+          - 'minor'
+
+  # GitHub Actions আপডেট (গ্ৰুপিং সহ)
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'UTC'
+    open-pull-requests-limit: 5
+    labels:
+      - 'dependencies'
+      - 'github-actions'
+    commit-message:
+      prefix: 'ci'
+      include: 'scope'
+    # সব GitHub Actions আপডেটকে একটি PR-এ নিয়ে আসবে
+    groups:
+      actions-updates:
+        patterns:
+          - '*'

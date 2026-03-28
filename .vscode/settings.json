@@ -1,0 +1,64 @@
+{
+  // --- General Editor Settings ---
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "window.zoomLevel": 1.5,
+
+  // --- Auto Fixes on Save ---
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit",
+    "source.fixAll.markdownlint": "explicit"
+  },
+
+  // --- Language Specific Overrides ---
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true
+  },
+
+  // --- Linter Validation Settings ---
+  "stylelint.validate": ["css", "scss", "postcss"],
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+
+  // --- File & Whitespace Control ---
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  // --- Search & Explorer Exclusions ---
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/artifacts": true,
+    "**/playwright-report": true,
+    "**/test-results": true,
+    "**/.pnpm-store": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true,
+    "**/*.tsbuildinfo": true
+  }
+}

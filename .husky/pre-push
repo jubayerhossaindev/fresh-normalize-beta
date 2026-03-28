@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+echo "🔍 Running lint..."
+pnpm lint
+
+echo "🎨 Formatting code..."
+pnpm format
+
+echo "🧪 Running tests..."
+pnpm test

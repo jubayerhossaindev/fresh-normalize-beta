@@ -1,0 +1,106 @@
+# GitHub repository labels
+# Applied via: npx github-label-sync --access-token $TOKEN --labels .github/labels.yml YOUR_USERNAME/fresh-normalize
+
+- name: 'bug'
+  color: 'd73a4a'
+  description: "Something isn't working correctly"
+
+- name: 'enhancement'
+  color: 'a2eeef'
+  description: 'New feature or improvement request'
+
+- name: 'documentation'
+  color: '0075ca'
+  description: 'Improvements or additions to documentation'
+
+- name: 'dependencies'
+  color: '0366d6'
+  description: 'Pull requests that update a dependency file'
+
+- name: 'automated'
+  color: 'e4e669'
+  description: 'Created by an automated process'
+
+- name: 'github-actions'
+  color: '000000'
+  description: 'GitHub Actions CI/CD changes'
+
+- name: 'good first issue'
+  color: '7057ff'
+  description: 'Good for newcomers to the project'
+
+- name: 'help wanted'
+  color: '008672'
+  description: 'Extra attention is needed'
+
+- name: 'needs-triage'
+  color: 'e4e669'
+  description: 'Needs review and categorization'
+
+- name: 'stale'
+  color: 'cccccc'
+  description: 'No recent activity — will be closed soon'
+
+- name: 'pinned'
+  color: 'e8e8e8'
+  description: 'Should not be automatically closed'
+
+- name: 'security'
+  color: 'ee0701'
+  description: 'Security related issue or fix'
+
+- name: 'breaking change'
+  color: 'b60205'
+  description: 'This introduces a breaking API change'
+
+- name: 'browser: chrome'
+  color: '4CAF50'
+  description: 'Specific to Chrome / Chromium'
+
+- name: 'browser: firefox'
+  color: 'FF6D00'
+  description: 'Specific to Firefox'
+
+- name: 'browser: safari'
+  color: '1565C0'
+  description: 'Specific to Safari / WebKit'
+
+- name: 'browser: edge'
+  color: '0078D7'
+  description: 'Specific to Edge'
+
+- name: 'scope: typography'
+  color: 'c5def5'
+  description: 'Relates to typography normalization'
+
+- name: 'scope: forms'
+  color: 'c5def5'
+  description: 'Relates to form element normalization'
+
+- name: 'scope: accessibility'
+  color: 'c5def5'
+  description: 'Relates to accessibility improvements'
+
+- name: 'scope: media'
+  color: 'c5def5'
+  description: 'Relates to img/video/media normalization'
+
+- name: 'scope: tables'
+  color: 'c5def5'
+  description: 'Relates to table normalization'
+
+- name: 'scope: interactive'
+  color: 'c5def5'
+  description: 'Relates to dialog/details/popover elements'
+
+- name: 'WIP'
+  color: 'fbca04'
+  description: 'Work in progress — not ready for review'
+
+- name: 'duplicate'
+  color: 'cfd3d7'
+  description: 'This issue or pull request already exists'
+
+- name: 'wontfix'
+  color: 'ffffff'
+  description: 'This will not be worked on'

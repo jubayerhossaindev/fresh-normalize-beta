@@ -1,0 +1,41 @@
+# lefthook.yml — Git hooks managed by Lefthook for pnpm
+# Install: pnpm add -D lefthook && pnpm lefthook install
+
+pre-commit:
+  parallel: true
+  commands:
+    lint-css:
+      glob: '*.css'
+      run: pnpm exec stylelint {staged_files} --fix
+      stage_fixed: true
+
+    format-check:
+      glob: '*.{css,js,ts,json,md,yml}'
+      run: pnpm exec prettier --check {staged_files}
+
+commit-msg:
+  commands:
+    validate-message:
+      run: |
+        MSG=$(cat {1})
+        # Enforce Conventional Commits format (2026 standard)
+        if ! echo "$MSG" | grep -qE "^(feat|fix|docs|style|refactor|perf|test|chore|ci|build|revert)(\([a-z0-9-]+\))?(!)?: .{1,100}"; then
+          echo ""
+          echo "❌ Commit message must follow Conventional Commits format:"
+          echo "   type(scope): subject"
+          echo ""
+          echo "   Examples:"
+          echo "   fix(forms): normalize file-selector-button in Safari"
+          echo "   feat(dialog): add backdrop normalization"
+          echo "   docs: update README with CDN links"
+          echo ""
+          echo "   Types: feat, fix, docs, style, refactor, perf, test, chore, ci, build, revert"
+          echo ""
+          exit 1
+        fi
+
+pre-push:
+  commands:
+    test:
+      run: pnpm test
+      fail_text: '❌ Tests must pass before pushing to remote'

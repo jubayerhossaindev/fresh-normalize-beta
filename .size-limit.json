@@ -1,0 +1,26 @@
+[
+  {
+    "name": "fresh-normalize.css (raw)",
+    "path": "fresh-normalize.css",
+    "limit": "35 kB",
+    "gzip": false
+  },
+  {
+    "name": "fresh-normalize.css (gzip)",
+    "path": "fresh-normalize.css",
+    "limit": "10 kB",
+    "gzip": true
+  },
+  {
+    "name": "dist/fresh-normalize.min.css (raw)",
+    "path": "dist/fresh-normalize.min.css",
+    "limit": "20 kB",
+    "gzip": false
+  },
+  {
+    "name": "dist/fresh-normalize.min.css (gzip)",
+    "path": "dist/fresh-normalize.min.css",
+    "limit": "6 kB",
+    "gzip": true
+  }
+]

@@ -1,0 +1,14 @@
+# Platform and Image
+-P ubuntu-latest=node:24-slim
+
+# Secrets (Placeholders)
+-s SNYK_TOKEN=placeholder
+-s NPM_TOKEN=placeholder
+
+# Features
+--use-gitignore
+--artifact-server-path ./artifacts
+--artifact-server-port 34567
+
+# Performance
+--rebuild=false

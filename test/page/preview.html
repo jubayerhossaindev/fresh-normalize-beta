@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="fresh-normalize — Modern CSS normalization for 2026" />
+    <title>fresh-normalize — Preview</title>
+    <link rel="stylesheet" href="../fresh-normalize.css" />
+    <style>
+      :root {
+        --demo-max-width: 800px;
+        --demo-padding: 2rem;
+        --demo-gap: 2rem;
+        --demo-section-gap: 3rem;
+      }
+
+      body {
+        padding: var(--demo-padding);
+        max-width: var(--demo-max-width);
+        margin-inline: auto;
+        font-size: 1rem;
+        color: var(--fn-text-color);
+        background: var(--fn-bg-color);
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
+        padding: 0.25em 0.65em;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        background: color-mix(in srgb, var(--fn-link-color) 15%, transparent);
+        color: var(--fn-link-color);
+        border: 1px solid color-mix(in srgb, var(--fn-link-color) 30%, transparent);
+      }
+
+      .demo-section {
+        padding: 1.5rem;
+        border: 1px solid var(--fn-border-color);
+        border-radius: 8px;
+        margin-block: var(--demo-section-gap);
+      }
+
+      .demo-section h3 {
+        margin-block-start: 0;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        opacity: 0.6;
+      }
+
+      table {
+        width: 100%;
+        font-size: 0.9rem;
+      }
+
+      th, td {
+        padding: 0.5em 1em;
+        border: 1px solid var(--fn-border-color);
+      }
+
+      th {
+        background: color-mix(in srgb, var(--fn-border-color) 30%, transparent);
+        font-weight: 600;
+      }
+
+      code {
+        background: color-mix(in srgb, var(--fn-border-color) 50%, transparent);
+        padding: 0.1em 0.4em;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+
+      pre {
+        background: color-mix(in srgb, var(--fn-border-color) 30%, transparent);
+        padding: 1em;
+        border-radius: 6px;
+        overflow-x: auto;
+      }
+
+      pre code {
+        background: none;
+        padding: 0;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-block: 1rem;
+      }
+
+      .feature-card {
+        padding: 1rem;
+        border: 1px solid var(--fn-border-color);
+        border-radius: 6px;
+      }
+
+      .feature-card h4 {
+        margin: 0 0 0.5em;
+        font-size: 0.9rem;
+      }
+
+      .feature-card p {
+        margin: 0;
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header>
+      <h1>
+        <span style="color: var(--fn-link-color)">fresh</span>-normalize
+        <span class="badge">v1.0.0</span>
+      </h1>
+      <p>A modern CSS normalization library for 2026. Targets evergreen browsers with CSS custom properties, dark mode, accessibility, and motion preferences built-in.</p>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-block: 1rem">
+        <span class="badge">⚡ ~4KB gzip</span>
+        <span class="badge">🌙 Dark mode</span>
+        <span class="badge">♿ A11y-first</span>
+        <span class="badge">🎨 CSS variables</span>
+        <span class="badge">🚀 No IE</span>
+      </div>
+
+      <pre><code>&lt;!-- CDN --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fresh-normalize/fresh-normalize.css"&gt;
+
+# npm
+npm install fresh-normalize</code></pre>
+    </header>
+
+    <main id="main">
+      <!-- Features Overview -->
+      <section>
+        <h2>Features</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h4>🎨 CSS Custom Properties</h4>
+            <p>All values exposed as <code>--fn-*</code> variables for easy theming</p>
+          </div>
+          <div class="feature-card">
+            <h4>🌙 Auto Dark Mode</h4>
+            <p>Responds to <code>prefers-color-scheme</code> automatically</p>
+          </div>
+          <div class="feature-card">
+            <h4>♿ Accessibility</h4>
+            <p>Focus-visible, sr-only, and skip-link utilities included</p>
+          </div>
+          <div class="feature-card">
+            <h4>🏃 Reduced Motion</h4>
+            <p>Disables all transitions for users who prefer it</p>
+          </div>
+          <div class="feature-card">
+            <h4>🖨️ Print Styles</h4>
+            <p>Clean, readable print layout with URL expansion</p>
+          </div>
+          <div class="feature-card">
+            <h4>📜 Scrollbar</h4>
+            <p>Consistent scrollbar styling across Chrome + Firefox</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <div class="demo-section">
+        <h3>Typography</h3>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <p>Paragraph with <strong>strong</strong>, <b>bold</b>, <em>italic</em>, <small>small</small>, and <code>inline code</code>.</p>
+        <p>H<sub>2</sub>O and E=mc<sup>2</sup> — sub/sup don't affect line height.</p>
+        <abbr title="World Wide Web Consortium">W3C</abbr> — abbreviation with dotted underline.
+        <hr />
+        <blockquote>A blockquote element for quoted content.</blockquote>
+        <pre><code>// pre + code block
+function normalize(css) {
+  return css.trim();
+}</code></pre>
+      </div>
+
+      <!-- Forms -->
+      <div class="demo-section">
+        <h3>Forms</h3>
+        <fieldset>
+          <legend>Form Controls</legend>
+          <p><label>Text: <input type="text" placeholder="placeholder" /></label></p>
+          <p><label>Number: <input type="number" value="42" /></label></p>
+          <p><label>Search: <input type="search" placeholder="search..." /></label></p>
+          <p><label>Email: <input type="email" placeholder="you@example.com" /></label></p>
+          <p><label>Color: <input type="color" value="#005fcc" /></label></p>
+          <p><label>Range: <input type="range" min="0" max="100" value="70" /></label></p>
+          <p><label>Checkbox: <input type="checkbox" checked /> Checked</label></p>
+          <p><label>Radio: <input type="radio" name="demo" checked /> Option A</label> <label><input type="radio" name="demo" /> Option B</label></p>
+          <p>
+            <label>Select:
+              <select>
+                <optgroup label="Group 1">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </optgroup>
+              </select>
+            </label>
+          </p>
+          <p><label>Textarea:<br /><textarea rows="3" cols="40">Textarea content</textarea></label></p>
+          <p><label>File: <input type="file" /></label></p>
+          <p>Progress: <progress value="70" max="100"></progress></p>
+          <p>
+            <button type="button">Button</button>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+            <input type="submit" value="Input Submit" />
+            <button type="button" disabled>Disabled</button>
+          </p>
+        </fieldset>
+      </div>
+
+      <!-- Tables -->
+      <div class="demo-section">
+        <h3>Tables</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>Value</th>
+              <th>Effect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>border-collapse</code></td>
+              <td><code>collapse</code></td>
+              <td>Removes double borders</td>
+            </tr>
+            <tr>
+              <td><code>border-color</code></td>
+              <td><code>currentcolor</code></td>
+              <td>Inherits text color</td>
+            </tr>
+            <tr>
+              <td><code>border-spacing</code></td>
+              <td><code>0</code></td>
+              <td>No cell gaps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Interactive -->
+      <div class="demo-section">
+        <h3>Interactive Elements</h3>
+        <details>
+          <summary>Click to expand a &lt;details&gt; element</summary>
+          <p>The <code>&lt;summary&gt;</code> has <code>display: list-item</code> and <code>cursor: pointer</code>.</p>
+        </details>
+      </div>
+
+      <!-- CSS Custom Properties Reference -->
+      <div class="demo-section">
+        <h3>CSS Custom Properties</h3>
+        <table>
+          <thead>
+            <tr><th>Variable</th><th>Default</th><th>Purpose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>--fn-font-sans</code></td><td>system-ui stack</td><td>Base font family</td></tr>
+            <tr><td><code>--fn-font-mono</code></td><td>ui-monospace stack</td><td>Monospace font family</td></tr>
+            <tr><td><code>--fn-line-height</code></td><td>1.5</td><td>Body line height</td></tr>
+            <tr><td><code>--fn-focus-color</code></td><td>#005fcc</td><td>Focus ring color</td></tr>
+            <tr><td><code>--fn-focus-width</code></td><td>3px</td><td>Focus ring width</td></tr>
+            <tr><td><code>--fn-text-color</code></td><td>#1a1a1a</td><td>Body text color</td></tr>
+            <tr><td><code>--fn-bg-color</code></td><td>#ffffff</td><td>Page background</td></tr>
+            <tr><td><code>--fn-link-color</code></td><td>#005fcc</td><td>Link color</td></tr>
+            <tr><td><code>--fn-border-color</code></td><td>#d1d5db</td><td>Border color</td></tr>
+            <tr><td><code>--fn-scrollbar-width</code></td><td>thin</td><td>Scrollbar width</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer>
+      <p><small>MIT License · <a href="https://github.com/YOUR_USERNAME/fresh-normalize">GitHub</a> · <a href="https://www.npmjs.com/package/fresh-normalize">npm</a></small></p>
+    </footer>
+  </body>
+</html>

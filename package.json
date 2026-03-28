@@ -1,0 +1,137 @@
+{
+  "name": "fresh-normalize-beta",
+  "version": "0.0.0-semantic",
+  "type": "module",
+  "description": "A fresh, modern CSS normalization library. Targets evergreen browsers with CSS custom properties, dark mode, accessibility, and motion preferences built-in.",
+  "author": {
+    "name": "Jubayer Hossain",
+    "email": "jubayerhossainbook@gmail.com",
+    "url": "https://github.com/jubayerhossaindev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jubayerhossaindev/fresh-normalize-beta.git"
+  },
+  "homepage": "https://github.com/jubayerhossaindev/fresh-normalize-beta#readme",
+  "bugs": {
+    "url": "https://github.com/jubayerhossaindev/fresh-normalize-beta/issues"
+  },
+  "keywords": [
+    "css",
+    "normalize",
+    "reset",
+    "modern-css",
+    "accessibility",
+    "dark-mode",
+    "evergreen",
+    "postcss",
+    "browser-reset",
+    "base-styles",
+    "starter-kit",
+    "performance",
+    "prefers-reduced-motion",
+    "css-variables",
+    "design-system",
+    "boilerplate",
+    "opinionated-reset",
+    "a11y",
+    "web-standards",
+    "minimalist",
+    "zero-runtime"
+  ],
+  "sideEffects": false,
+  "files": [
+    "fresh-normalize.css",
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "main": "fresh-normalize.css",
+  "style": "fresh-normalize.css",
+  "exports": {
+    ".": "./fresh-normalize.css",
+    "./style": "./fresh-normalize.css"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true,
+    "registry": "https://registry.npmjs.org/"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "http-server . --cors -p 8080",
+    "build": "pnpm run build:minify && pnpm run build:analyze",
+    "build:minify": "cleancss -o dist/fresh-normalize.min.css fresh-normalize.css",
+    "build:analyze": "node scripts/analyze.js",
+    "format": "prettier --write \"**/*.{css,js,ts,json,md,yml}\"",
+    "format:check": "prettier --check \"**/*.{css,js,ts,json,md,yml}\"",
+    "lint": "pnpm run lint:eslint && pnpm run lint:stylelint",
+    "lint:eslint": "eslint .",
+    "lint:stylelint": "stylelint fresh-normalize.css",
+    "lint:fix": "pnpm run lint:eslint -- --fix && pnpm run lint:stylelint -- --fix",
+    "lint:markdown": "markdownlint-cli2 --config .markdownlint.json \"**/*.md\" --ignore node_modules",
+    "test": "vitest run --coverage",
+    "test:unit": "vitest run --coverage --reporter=verbose",
+    "test:e2e": "playwright test test/e2e",
+    "test:all": "pnpm run test:unit && pnpm run test:e2e",
+    "typecheck": "tsc --noEmit",
+    "validate": "pnpm run lint && pnpm run format:check && pnpm run validate:css && pnpm run typecheck",
+    "validate:css": "node scripts/validate-css.js",
+    "prepare": "husky",
+    "act:ci": "act -W .github/workflows/ci.yml -s GITHUB_TOKEN=$(gh auth token)",
+    "act:all": "act -s GITHUB_TOKEN=$(gh auth token) --reuse",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@dagger.io/dagger": "^0.20.3",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.58.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.6",
+    "@semantic-release/npm": "^13.1.5",
+    "@types/node": "^25.5.0",
+    "@vitest/coverage-v8": "^4.1.2",
+    "clean-css-cli": "^5.6.3",
+    "eslint": "^10.1.0",
+    "http-server": "^14.1.1",
+    "husky": "^9.1.7",
+    "js-yaml": "^4.1.1",
+    "lint-staged": "^16.4.0",
+    "markdownlint-cli2": "^0.22.0",
+    "prettier": "^3.8.1",
+    "semantic-release": "^25.0.3",
+    "stylelint": "^17.6.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1",
+    "taze": "^19.10.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.57.2",
+    "vitest": "^4.1.2"
+  },
+  "lint-staged": {
+    "*.css": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "markdownlint-cli2 --fix",
+      "prettier --write"
+    ],
+    "*.{json,yml}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@10.33.0"
+}

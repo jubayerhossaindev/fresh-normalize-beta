@@ -1,0 +1,23 @@
+# Auto-detect text files and normalize line endings
+* text=auto eol=lf
+
+# Force LF on all text files
+*.css text eol=lf
+*.js text eol=lf
+*.ts text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.sh text eol=lf
+
+# Treat these as binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.sketch binary
+*.svg text eol=lf
