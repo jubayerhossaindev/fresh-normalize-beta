@@ -1,3 +1,16 @@
+## 1.0.0 (2026-03-28)
+
+### ⚠ BREAKING CHANGES
+
+- First stable release of the CSS normalization library
+
+### ✨ Features
+
+- initial release of fresh-normalize-beta
+  ([b968afe](https://github.com/jubayerhossaindev/fresh-normalize-beta/commit/b968afebab98d9d636d88c99cb901e134a66152c))
+- initial release of fresh-normalize-beta CSS library
+  ([48b3714](https://github.com/jubayerhossaindev/fresh-normalize-beta/commit/48b37147766b3bc93b37511247846072a92a2391))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

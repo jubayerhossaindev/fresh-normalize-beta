@@ -1,6 +1,6 @@
 {
   "name": "fresh-normalize-beta",
-  "version": "0.0.0-semantic",
+  "version": "1.0.0",
   "type": "module",
   "description": "A fresh, modern CSS normalization library. Targets evergreen browsers with CSS custom properties, dark mode, accessibility, and motion preferences built-in.",
   "author": {
