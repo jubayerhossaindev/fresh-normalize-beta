@@ -89,7 +89,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
-    "@dagger.io/dagger": "^0.20.8",
+    "@dagger.io/dagger": "^0.21.3",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.60.0",
     "@semantic-release/changelog": "^6.0.3",
@@ -97,12 +97,12 @@
     "@semantic-release/github": "^12.0.8",
     "@semantic-release/npm": "^13.1.5",
     "@types/node": "^25.9.1",
-    "@vitest/coverage-v8": "^4.1.7",
+    "@vitest/coverage-v8": "^4.1.8",
     "clean-css-cli": "^5.6.3",
-    "eslint": "^10.4.0",
+    "eslint": "^10.4.1",
     "http-server": "^14.1.1",
     "husky": "^9.1.7",
-    "js-yaml": "^4.1.1",
+    "js-yaml": "^4.2.0",
     "lint-staged": "^16.4.0",
     "markdownlint-cli2": "^0.22.1",
     "prettier": "^3.8.3",
@@ -111,10 +111,10 @@
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
     "taze": "^19.14.1",
-    "tsx": "^4.22.3",
+    "tsx": "^4.22.4",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.4",
-    "vitest": "^4.1.7"
+    "typescript-eslint": "^8.60.1",
+    "vitest": "^4.1.8"
   },
   "lint-staged": {
     "*.css": [
