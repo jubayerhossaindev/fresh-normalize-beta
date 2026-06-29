@@ -87,7 +87,7 @@
     "release:dry": "semantic-release --dry-run"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
+    "@commitlint/cli": "^21.1.0",
     "@commitlint/config-conventional": "^20.5.3",
     "@dagger.io/dagger": "^0.21.7",
     "@eslint/js": "^10.0.1",
