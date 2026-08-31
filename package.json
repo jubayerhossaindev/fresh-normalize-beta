@@ -89,7 +89,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
-    "@dagger.io/dagger": "^0.21.8",
+    "@dagger.io/dagger": "^0.21.9",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.62.1",
     "@semantic-release/changelog": "^6.0.3",
@@ -113,7 +113,7 @@
     "taze": "^19.16.0",
     "tsx": "^4.23.12",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.67.0",
+    "typescript-eslint": "^8.68.0",
     "vitest": "^4.1.11"
   },
   "lint-staged": {
