@@ -110,7 +110,7 @@
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
-    "taze": "^19.16.0",
+    "taze": "^21.1.0",
     "tsx": "^4.23.13",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.69.0",
