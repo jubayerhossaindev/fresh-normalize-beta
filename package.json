@@ -92,7 +92,7 @@
     "@dagger.io/dagger": "^0.21.9",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.62.1",
-    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/changelog": "^7.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^12.0.9",
     "@semantic-release/npm": "^13.1.5",
