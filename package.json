@@ -89,7 +89,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
-    "@dagger.io/dagger": "^0.21.9",
+    "@dagger.io/dagger": "^0.21.10",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.63.0",
     "@semantic-release/changelog": "^6.0.3",
@@ -107,13 +107,13 @@
     "markdownlint-cli2": "^0.23.3",
     "prettier": "^3.9.9",
     "semantic-release": "^25.0.9",
-    "stylelint": "^17.15.0",
+    "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
     "stylelint-order": "^8.1.1",
     "taze": "^19.16.0",
     "tsx": "^4.23.15",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.70.1",
+    "typescript-eslint": "^8.71.0",
     "vitest": "^4.1.11"
   },
   "lint-staged": {
